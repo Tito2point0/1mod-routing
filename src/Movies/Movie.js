@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
-  const {id} = useParams()
-  
-
+  const { id } = useParams();
 
   useEffect(() => {
     axios
       .get(`http://localhost:5001/api/movies/${id}`) // Study this endpoint with Postman
-      .then(response => {
-         setMovie(response.data)
+      .then((response) => {
+        setMovie(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
     // This effect should run every time time
@@ -42,7 +40,7 @@ export default function Movie(props) {
         </div>
         <h3>Actors</h3>
 
-        {stars.map(star => (
+        {stars.map((star) => (
           <div key={star} className="movie-star">
             {star}
           </div>
